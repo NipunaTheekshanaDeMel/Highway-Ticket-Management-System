@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "ccf72f11-65a4-4f5b-8827-28a45d157d40",
+		"name": "microservices-coursework",
+		"description": "A robust microservice-based backend application for a Highway Ticket Management System.  \nThis system will streamline the handling of ticket issuance, vehicle registration, user  \nmanagement, and payment processing without relying on external payment gateways.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30897079"
+	},
+	"item": [
+		{
+			"name": "User Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nipuna\",\r\n    \"email\": \"nipunatheekshana19@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						},
+						"description": "This endpoint allows you to create a new user by sending a POST request to the specified URL. The request should include a JSON payload in the request body with the following parameters:\n\n- `name` (string): The name of the user.\n- `email` (string): The email address of the user.\n- `password` (string): The password for the user account.\n- `role` (string): The role or type of the user.\n    \n\nThe response to the request will include the details of the newly created user, including the user's unique identifier, name, email, and role."
+					},
+					"response": []
+				},
+				{
+					"name": "Update user details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nimna\",\r\n    \"email\": \"nimna@gmail.com\",\r\n    \"password\": \"4321\",\r\n    \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/7531e006-bc4e-484a-86a5-874217f3c1a5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"7531e006-bc4e-484a-86a5-874217f3c1a5"
+							]
+						},
+						"description": "### Update User Details\n\nThis API endpoint is used to update the details of a specific user.\n\n#### Request Body\n\n- `name` (string, optional): The updated name of the user.\n- `email` (string, optional): The updated email of the user.\n- `password` (string, optional): The updated password of the user.\n- `role` (string, optional): The updated role of the user.\n    \n\nThe `status` property indicates the status of the update operation, and the `message` property provides additional information about the operation."
+					},
+					"response": []
+				},
+				{
+					"name": "User exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users?id=aaac91c9-1842-4c9f-96e6-4f3cbf42e648",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "aaac91c9-1842-4c9f-96e6-4f3cbf42e648"
+								}
+							]
+						},
+						"description": "This API endpoint retrieves user existanse information based on the provided user ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nipunatheekshana19@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"verify"
+							]
+						},
+						"description": "### Verify User\n\nThe `POST` request is used to verify user credentials at the specified endpoint.\n\n#### Request Body\n\n- `email` (string, required): The email of the user to be verified.\n- `password` (string, required): The password associated with the user's account."
+					},
+					"response": []
+				}
+			],
+			"description": "Manages user and owner information."
+		},
+		{
+			"name": "Vehicle Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vehicles/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vehicles",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"registrationNo\": \"BFF-6502\",\r\n    \"model\": \"Honda Dio\",\r\n    \"year\": \"2017\",\r\n    \"userId\": \"aaac91c9-1842-4c9f-96e6-4f3cbf42e648\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vehicles"
+							]
+						},
+						"description": "# Create Vehicle\n\nThis API endpoint is used to create a new vehicle.\n\n## Request Body\n\n- `registrationNo` (string, required): The registration number of the vehicle.\n- `model` (string, required): The model of the vehicle.\n- `year` (string, required): The year of the vehicle.\n- `userId` (string, required): The ID of the user who owns the vehicle."
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vehicles"
+							]
+						},
+						"description": "This endpoint makes an HTTP GET request to retrieve a list of vehicles from the API.\n\n### Request\n\nNo request body is required for this endpoint.\n\n### Response\n\nThe response will be a JSON array containing objects with the following properties:\n\n- `vehicleId` (string): The unique identifier for the vehicle.\n- `registrationNo` (string): The registration number of the vehicle.\n- `model` (string): The model of the vehicle.\n- `year` (number): The year the vehicle was manufactured.\n- `userId` (string): The unique identifier of the user associated with the vehicle.\n    \n\nExample response:\n\n``` json\n[\n    {\n        \"vehicleId\": \"\",\n        \"registrationNo\": \"\",\n        \"model\": \"\",\n        \"year\": 0,\n        \"userId\": \"\"\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get selected vehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vehicles/0dd0a03d-5b95-4d38-b04d-d1e6fc76a2f2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vehicles",
+								"0dd0a03d-5b95-4d38-b04d-d1e6fc76a2f2"
+							]
+						},
+						"description": "This endpoint makes an HTTP GET request to retrieve information about a specific vehicle. The request should be made to [http://localhost:8080/api/v1/vehicles/{vehicle_id](http://localhost:8080/api/v1/vehicles/{vehicle)}\n\n### Request Body\n\nThis request does not require a request body.\n\n### Response Body\n\nUpon a successful request, the server will respond with a status code of 200 and a JSON object containing details about the vehicle. The response body includes the following fields:\n\n- vehicleId (string): The unique identifier of the vehicle.\n- registrationNo (string): The registration number of the vehicle.\n- model (string): The model of the vehicle.\n- year (number): The year of the vehicle.\n- userId (string): The unique identifier of the user associated with the vehicle."
+					},
+					"response": []
+				},
+				{
+					"name": "Update vehicle details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"registrationNo\": \"KV-1316\",\r\n    \"model\": \"Toyota Supra\",\r\n    \"year\": 1999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vehicles/c6b02fa2-4e4c-42f7-8a1a-cb8d161e3b8f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vehicles",
+								"c6b02fa2-4e4c-42f7-8a1a-cb8d161e3b8f"
+							]
+						},
+						"description": "### Update Vehicle Details\n\nThis endpoint is used to update the details of a specific vehicle.\n\n#### Request Body\n\n- `registrationNo` (string, optional): The new registration number of the vehicle.\n- `model` (string, optional): The updated model of the vehicle.\n- `year` (integer, optional): The new manufacturing year of the vehicle.\n    \n\n#### Response\n\nThe response will contain the updated details of the vehicle after the successful update operation."
+					},
+					"response": []
+				},
+				{
+					"name": "Vehicle exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/vehicles/exists?id=0dd0a03d-5b95-4d38-b04d-d1e6fc76a2f2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"vehicles",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0dd0a03d-5b95-4d38-b04d-d1e6fc76a2f2"
+								}
+							]
+						},
+						"description": "The endpoint retrieves the existence of a vehicle based on the provided ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Handles vehicle operations."
+		},
+		{
+			"name": "Ticket Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tickets/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tickets",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new ticket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"issuedLocation\": \"Kalutara\",\r\n    \"vehicleId\": \"0dd0a03d-5b95-4d38-b04d-d1e6fc76a2f2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tickets"
+							]
+						},
+						"description": "### Create a New Ticket\n\nThis endpoint allows you to create a new ticket.\n\n#### Request Body\n\n- `issuedLocation` (string, optional): The location where the ticket was issued.\n- `vehicleId` (string, optional): The ID of the vehicle for which the ticket is being issued."
+					},
+					"response": []
+				},
+				{
+					"name": "Get all tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tickets"
+							]
+						},
+						"description": "### GET /api/v1/tickets\n\nThis endpoint retrieves a list of tickets.\n\n#### Request\n\nNo request body is required for this endpoint.\n\n#### Response\n\nThe response will be a JSON array containing ticket objects with the following properties:\n\n- `ticketId` (string): The unique identifier for the ticket.\n- `status` (string): The status of the ticket.\n- `issuedAt` (string): The timestamp when the ticket was issued.\n- `collectedAt` (string): The timestamp when the ticket was collected.\n- `issuedLocation` (string): The location where the ticket was issued.\n- `collectedLocation` (string): The location where the ticket was collected.\n- `vehicleId` (string): The unique identifier for the vehicle associated with the ticket.\n    \n\nExample response:\n\n``` json\n[\n    {\n        \"ticketId\": \"\",\n        \"status\": \"\",\n        \"issuedAt\": \"\",\n        \"collectedAt\": \"\",\n        \"issuedLocation\": \"\",\n        \"collectedLocation\": \"\",\n        \"vehicleId\": \"\"\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get selected ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tickets/f2d74ec9-6fb9-489e-8b9d-088df4a99ecb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tickets",
+								"f2d74ec9-6fb9-489e-8b9d-088df4a99ecb"
+							]
+						},
+						"description": "The endpoint retrieves ticket details for a specific ticket ID.\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"ticketId\": {\n      \"type\": \"string\"\n    },\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"issuedAt\": {\n      \"type\": \"string\"\n    },\n    \"collectedAt\": {\n      \"type\": \"string\"\n    },\n    \"issuedLocation\": {\n      \"type\": \"string\"\n    },\n    \"collectedLocation\": {\n      \"type\": \"string\"\n    },\n    \"vehicleId\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Update ticket status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tickets/5dbf757c-9d76-4253-b7d1-a976dc0e29c9?collectedLocation=Colombo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tickets",
+								"5dbf757c-9d76-4253-b7d1-a976dc0e29c9"
+							],
+							"query": [
+								{
+									"key": "collectedLocation",
+									"value": "Colombo"
+								}
+							]
+						},
+						"description": "This endpoint allows updating a specific ticket with the provided ID, and the collected location can be specified as a query parameter.\n\n### Request Body\n\nThe request body should contain the updated details of the ticket, including the necessary fields to be modified.\n\n### Response Body\n\nThe response will include the updated details of the ticket after the modification."
+					},
+					"response": []
+				},
+				{
+					"name": "Ticket exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tickets/exists?id=f2d74ec9-6fb9-489e-8b9d-088df4a99ecb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tickets",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "f2d74ec9-6fb9-489e-8b9d-088df4a99ecb"
+								}
+							]
+						},
+						"description": "## Check if Ticket Exists\n\nThis endpoint makes an HTTP GET request to verify the existence of a ticket with the specified ID.\n\n### Request Parameters\n\n- `id` (query parameter) : The unique identifier of the ticket.\n    \n\n### Response\n\nUpon successful execution, the endpoint returns a status code of 200 and a JSON response with a boolean value indicating whether the ticket exists or not.\n\nExample response body:\n\n``` json\ntrue\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "Manages ticket lifecycle."
+		},
+		{
+			"name": "Payment Service",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/payments/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentMethod\": \"CASH\",\r\n    \"amount\": 250,\r\n    \"location\": \"Colombo\",\r\n    \"ticketId\": \"f2d74ec9-6fb9-489e-8b9d-088df4a99ecb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/payments/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"create"
+							]
+						},
+						"description": "This endpoint is used to create a new payment. The request should be sent as an HTTP POST to the specified URL. The request body should contain the following parameters:\n\n- `paymentMethod` (string): The method of payment for the transaction.\n- `amount` (number): The amount of the payment.\n- `location` (string): The location where the payment is being made.\n- `ticketId` (string): The ID of the ticket associated with the payment.\n    \n\nThe response will include the details of the newly created payment, including a unique identifier for the payment and any other relevant information."
+					},
+					"response": []
+				}
+			],
+			"description": "Facilitates secure payment processing internally."
+		}
+	]
+}
